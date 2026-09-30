@@ -1,0 +1,13 @@
+/* With Tailwind v4 enabled: */
+/* @import "tailwindcss"; */
+
+/* Frames render independently and out of order, so wall-clock CSS motion
+   (transitions, keyframe animations, caret blink) would differ per frame.
+   All motion must come from useCurrentFrame(). Wrap the video in .video-root. */
+.video-root *,
+.video-root *::before,
+.video-root *::after {
+  transition: none !important;
+  animation: none !important;
+  caret-color: transparent !important;
+}

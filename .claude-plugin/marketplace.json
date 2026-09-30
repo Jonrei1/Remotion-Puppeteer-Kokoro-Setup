@@ -1,0 +1,17 @@
+{
+  "name": "remotion-kokoro-setup",
+  "owner": {
+    "name": "Jonrei"
+  },
+  "description": "Remotion video tooling setup with a local Kokoro TTS voiceover.",
+  "plugins": [
+    {
+      "name": "remotion-video-setup",
+      "source": "./",
+      "description": "Sets up Remotion + Playwright + Chromium + Kokoro TTS (voice af_bella) in the current project. Tooling only.",
+      "version": "1.0.0",
+      "category": "video",
+      "tags": ["remotion", "video", "tts", "setup"]
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "video:studio": "remotion studio",
+    "video:voice": "tsx video/scripts/voice.ts",
+    "video:capture": "tsx --env-file=.env video/capture/capture.ts",
+    "video:render": "npm run video:voice && remotion render Main video/out/video.mp4 && remotion render Main video/out/video.wav --codec=wav && tsx video/scripts/mux-audio.ts"
+  }
+}

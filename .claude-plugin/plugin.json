@@ -1,0 +1,12 @@
+{
+  "name": "remotion-video-setup",
+  "displayName": "Remotion Video Setup (Remotion + Playwright + Chromium + Kokoro TTS)",
+  "version": "1.0.0",
+  "description": "Sets up a Remotion video project with Chromium, Playwright and a local Kokoro TTS voiceover (voice af_bella). Tooling only: you describe the video afterwards.",
+  "author": {
+    "name": "Jonrei"
+  },
+  "homepage": "https://github.com/Jonrei1/Remotion-Puppeteer-Kokoro-Setup",
+  "repository": "https://github.com/Jonrei1/Remotion-Puppeteer-Kokoro-Setup",
+  "keywords": ["remotion", "video", "playwright", "chromium", "kokoro", "tts", "voiceover", "setup"]
+}
