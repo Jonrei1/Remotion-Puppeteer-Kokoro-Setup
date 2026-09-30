@@ -535,20 +535,50 @@ console.log(`✓ ${video}: soundtrack re-muxed in sync with the picture`);
 `video:capture` expects a `.env` file to exist (it can be empty). Remove `--env-file=.env`
 if the app needs no login.
 
-### `.gitignore` additions
+### `.gitignore`
+
+Put this in the folder that holds the video's `package.json`. It works whether that folder is its own repo or sits inside a larger one, because the patterns are unanchored. It keeps every dependency out of git: `node_modules/` also covers Remotion's Chrome Headless Shell (`node_modules/.remotion/`) and the Kokoro model (`node_modules/@huggingface/transformers/.cache/`). Playwright's Chromium goes to a per-user cache outside the project.
 
 ```gitignore
-# renders, captures and generated audio stay on the machine
-/video/out/
-/video/public/captures/
-/video/public/voice/
-/out/
+# Dependencies: never tracked, restore with `npm install`. This also covers
+# the big downloads, which live inside node_modules:
+#   node_modules/.remotion/                        Remotion's Chrome Headless Shell
+#   node_modules/@huggingface/transformers/.cache/ the Kokoro TTS model
+# (Playwright's Chromium goes to a per-user cache outside the project.)
+# Unanchored, so it matches in this folder and any folder below it.
+node_modules/
+.pnpm-store/
+.yarn/
+
+# Package manager and build leftovers
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.tsbuildinfo
+
+# Secrets: capture logins live in .env and must never be committed
+.env
+.env.*
+!.env.example
+
+# Renders, captures and generated audio stay on the machine
+# (the voice WAVs are regenerated from video/src/data/voice-manifest.json,
+# which IS committed)
+video/out/
+out/
+video/public/captures/
+video/public/voice/
 *.mp4
 *.mov
 *.webm
+
+# OS files
+.DS_Store
+Thumbs.db
 ```
 
-Commit `video/src/data/voice-manifest.json`. The WAVs are regenerated from the script.
+Commit `package-lock.json` (so reinstalls get the same versions) and `video/src/data/voice-manifest.json`. The WAVs are regenerated from the script.
 
 ---
 

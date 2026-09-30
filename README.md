@@ -50,7 +50,9 @@ Claude then works through these steps:
 3. **Install:** installs the pinned packages, Remotion's Chrome Headless Shell and Playwright's
    Chromium.
 4. **Files:** copies the project files into `video/`, plus `remotion.config.ts`, the npm
-   scripts and `.gitignore` entries.
+   scripts and a `.gitignore`. The `.gitignore` keeps `node_modules` (including the
+   downloaded Chrome and the Kokoro model), renders, voice clips and `.env` out of git, even
+   when the video lives in its own folder inside a bigger repo.
 5. **Verification:**
    - a type check;
    - a voice test in `af_bella` (the first run downloads the ~90 MB Kokoro model);

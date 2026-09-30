@@ -1,8 +1,0 @@
-# renders, captures and generated audio stay on the machine
-/video/out/
-/video/public/captures/
-/video/public/voice/
-/out/
-*.mp4
-*.mov
-*.webm

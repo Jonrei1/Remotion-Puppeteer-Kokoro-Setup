@@ -80,8 +80,11 @@ Copy everything under `${CLAUDE_SKILL_DIR}/templates/` into the project, keeping
 these exceptions:
 - **`package.scripts.json`:** don't copy it. Merge its `scripts` into the project's
   `package.json`. Keep existing scripts, and ask if a name clashes.
-- **`gitignore.append`:** append its lines to the project's `.gitignore`, creating the file if
-  needed and skipping lines already present.
+- **`gitignore`:** it becomes the `.gitignore` of the target folder (the one with the video's
+  `package.json`), so that folder's `node_modules`, the downloaded browser, the Kokoro model,
+  renders, voice clips and `.env` are never tracked. This holds even when the folder sits
+  inside a larger repo. If a `.gitignore` already exists there, append only the lines it
+  lacks. Keep `package-lock.json` and `video/src/data/voice-manifest.json` tracked.
 - **`tsconfig.json`:** copy it only if the project has none. Otherwise make sure the existing
   one has `"resolveJsonModule": true` and `"jsx": "react-jsx"`, and that it includes `video`
   and `remotion.config.ts`. If the project is an app with its own build (Next.js, Vite), check
